@@ -70,7 +70,7 @@ defmodule KineticLib.Sqitch.Status do
   @date_format "YYYY-MM-DD HH24:MI:SS UTC"
 
   def status_query(project) do
-    from(c in "changes",
+    from c in "changes",
       # left_join: t in ^tags(),
       # The above is replaced by the following 2 lines.
       # It works on Ecto 2.x.x but not on Ecto 3.2.x because of a bug that will only be fixed at Ecto 3.3.x
@@ -122,11 +122,10 @@ defmodule KineticLib.Sqitch.Status do
             t.tag
           )
       }
-    )
   end
 
   def _changes_query(project) do
-    from(c in "changes",
+    from c in "changes",
       where: c.project == ^project,
       order_by: [desc: c.committed_at],
       select: %{
@@ -152,11 +151,10 @@ defmodule KineticLib.Sqitch.Status do
             ^@date_format
           )
       }
-    )
   end
 
   def _tags_query(project) do
-    from(t in "tags",
+    from t in "tags",
       where: t.project == ^project,
       order_by: [desc: t.committed_at],
       select: %{
@@ -179,7 +177,6 @@ defmodule KineticLib.Sqitch.Status do
             ^@date_format
           )
       }
-    )
   end
 
   # defp tags, do: from(t in "tags")

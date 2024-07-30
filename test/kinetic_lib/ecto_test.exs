@@ -81,7 +81,7 @@ defmodule KineticLib.EctoTest do
     @primary_key {:code, :string, []}
 
     schema "foo" do
-      field(:active, :boolean)
+      field :active, :boolean
 
       timestamps(type: :utc_datetime_usec)
     end
@@ -94,7 +94,7 @@ defmodule KineticLib.EctoTest do
     @primary_key {:code, :string, []}
 
     schema "bar" do
-      field(:active, :boolean)
+      field :active, :boolean
 
       timestamps(type: :utc_datetime_usec)
     end

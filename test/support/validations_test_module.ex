@@ -8,9 +8,9 @@ defmodule KineticLib.Ecto.Changeset.ValidationsTest.Image do
 
   @derive {Jason.Encoder, only: ~w(url color immutable)a}
   embedded_schema do
-    field(:url)
-    field(:color)
-    field(:immutable)
+    field :url
+    field :color
+    field :immutable
   end
 
   def changeset(image, params) do
