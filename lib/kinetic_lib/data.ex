@@ -169,7 +169,7 @@ defmodule KineticLib.Data do
 
   ## Examples
 
-      iex> KineticLib.Data.subset?(%{code: "A"}, %Kinetic.Resources.Product{code: "A", data: %{}})
+      iex> KineticLib.Data.subset?(%{code: "A"}, %{code: "A", data: %{}})
       true
 
       iex> KineticLib.Data.subset?(%{code: "A", data: %{}}, %{code: "A"})

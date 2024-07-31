@@ -4,6 +4,10 @@ defmodule KineticLib.DataTest do
 
   alias KineticLib.Data
 
+  defmodule Product do
+    defstruct [:code]
+  end
+
   setup_all do
     %{
       data_1: %{
@@ -109,13 +113,13 @@ defmodule KineticLib.DataTest do
     end
 
     test "success when map2 is a struct" do
-      assert Data.subset?(%{code: "A"}, %Kinetic.Resources.Product{code: "A"})
+      assert Data.subset?(%{code: "A"}, %Product{code: "A"})
     end
 
     test "success when the same struct type" do
       assert Data.subset?(
-               %Kinetic.Resources.Product{code: "A"},
-               %Kinetic.Resources.Product{code: "A"}
+               %Product{code: "A"},
+               %Product{code: "A"}
              )
     end
 
@@ -124,7 +128,7 @@ defmodule KineticLib.DataTest do
     end
 
     test "fails if map1 is a different struct type" do
-      map1 = %Kinetic.Resources.Product{code: "A"}
+      map1 = %Product{code: "A"}
       map2 = Map.from_struct(map1)
 
       refute Data.subset?(map1, map2)
