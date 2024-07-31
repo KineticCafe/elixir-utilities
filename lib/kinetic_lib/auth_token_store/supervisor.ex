@@ -1,6 +1,6 @@
 defmodule KineticLib.AuthTokenStore.Supervisor do
   @moduledoc """
-  A supervisor for the server behind `KineticLib.AuthTokenStore`.
+  A supervisor for `KineticLib.AuthTokenStore.ProviderStore`s.
   """
 
   use Supervisor
@@ -9,7 +9,7 @@ defmodule KineticLib.AuthTokenStore.Supervisor do
     Supervisor.start_link(__MODULE__, options, name: __MODULE__)
   end
 
-  def init(options) do
-    Supervisor.init([{KineticLib.AuthTokenStore, options}], strategy: :one_for_one)
+  def init(_options) do
+    Supervisor.init([], strategy: :one_for_one)
   end
 end
